@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Product>
+
+<div class="text-center mb-3">
+    <a href="@Url.Action("Create", "Products")" class="btn btn-outline-secondary">ADD PRODUCT</a>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 custom-card">
+                        <img src="@product.Picture" class="card-img-top" alt="Product Image" />
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text"><strong>SKU:</strong> @product.SKU</p>
+                            <p class="card-text"><strong>Price:</strong> @product.Price @product.Currency</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <p>No products available.</p>
+    </div>
+}
